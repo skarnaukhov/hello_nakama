@@ -1,11 +1,11 @@
 import { createMock } from 'ts-auto-mock';
 import { On, method } from 'ts-auto-mock/extension';
-import rpcFileHash from "../src/rpc-file-hash";
+import {rpcFileHash} from "../src/rpc-file-hash";
 import {describe, expect, beforeEach, test, jest} from '@jest/globals';
 import 'jest';
 
 describe('rpcFileHash', function() {
-    let mockCtx: any, mockLogger: any, mockNk: any, mockLoggerError: any, mockNkFileRead: any, mockNkHash: any, mockNkStorageWrite: any, mockStorageWriteAck: any, payload: any;
+    let mockCtx: any, mockLogger: any, mockNk: any, mockLoggerError: any, mockNkFileRead: any, mockNkHash: any, mockNkStorageWrite: any, payload: any;
 
     beforeEach(function () {
         // Create mock objects to pass to the RPC.
@@ -17,7 +17,6 @@ describe('rpcFileHash', function() {
         mockCtx = createMock<nkruntime.Context>({ userId: 'mock-user' });
         mockLogger = createMock<nkruntime.Logger>();
         mockNk = createMock<nkruntime.Nakama>();
-        mockStorageWriteAck = createMock<nkruntime.StorageWriteAck>();
 
         // Configure specific mock functions to use Jest spies via jest-ts-auto-mock
         mockLoggerError = On(mockLogger).get(method(function (mock) {
@@ -92,8 +91,7 @@ describe('rpcFileHash', function() {
             userId: userId
         }
         let payloadStr = JSON.stringify(payload);
-        const result = rpcFileHash(mockCtx, mockLogger, mockNk, payloadStr);
-        const resultPayload = JSON.parse(result);
+        rpcFileHash(mockCtx, mockLogger, mockNk, payloadStr);
 
         expect(mockNkStorageWrite).toBeCalledTimes(1);
         expect(mockNkStorageWrite).toBeCalledWith([write]);

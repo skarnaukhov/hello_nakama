@@ -1,4 +1,4 @@
-function rpcFileHash(context: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string): string {
+export function rpcFileHash(context: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string): string {
     let request : FileHashRequest = {
         type: 'core',
         version: '1.0.0'
@@ -75,5 +75,3 @@ function rpcFileHash(context: nkruntime.Context, logger: nkruntime.Logger, nk: n
     logger.info('Response: %q', result);
     return result;
 }
-
-// export default rpcFileHash;

@@ -1,15 +1,15 @@
 FROM node:alpine AS node-builder
 
-ENV GO111MODULE on
-ENV CGO_ENABLED 1
-ENV GOPRIVATE "sk/hello-nakama"
-
 WORKDIR /backend
+
+COPY package*.json .
+RUN npm install
+
 COPY . .
+RUN npm run build
 
-
-FROM heroiclabs/nakama:3.16.0
+FROM registry.heroiclabs.com/heroiclabs/nakama:3.21.1
 
 COPY --from=node-builder /backend/dist/*.js /nakama/data/modules/dist/
-COPY --from=node-builder /backend/local.yml /nakama/data/
+COPY local.yml /nakama/data/
 COPY /data/core/*.json /nakama/data/core/
