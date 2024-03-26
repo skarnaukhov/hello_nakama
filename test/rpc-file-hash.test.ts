@@ -1,6 +1,6 @@
 import { createMock } from 'ts-auto-mock';
 import { On, method } from 'ts-auto-mock/extension';
-import rpcFileHash from "./rpc-file-hash";
+import rpcFileHash from "../src/rpc-file-hash";
 import {describe, expect, beforeEach, test, jest} from '@jest/globals';
 import 'jest';
 

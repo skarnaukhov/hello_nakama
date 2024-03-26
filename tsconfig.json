@@ -1,15 +1,15 @@
 {
   "files": [
-    "./main.ts",
-    "./messages.ts",
-    "./rpc-file-hash.ts"
+    "./src/main.ts",
+    "./src/messages.ts",
+    "./src/rpc-file-hash.ts"
   ],
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "typeRoots": [
       "./node_modules"
     ],
-    "outFile": "./build/index.js",
+    "outFile": "./dist/index.js",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
