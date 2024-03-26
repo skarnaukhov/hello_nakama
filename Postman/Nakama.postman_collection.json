@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "93fbed42-69da-4a28-882b-5299aaaeb4d2",
+		"name": "Nakama",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3163367",
+		"_collection_link": "https://speeding-eclipse-357789.postman.co/workspace/Cellar-door~13eaa95b-72fa-4449-897e-42c006fca761/collection/3163367-93fbed42-69da-4a28-882b-5299aaaeb4d2?action=share&source=collection_link&creator=3163367"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "defaultkey:",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": \"$(uuidgen)\"}"
+				},
+				"url": {
+					"raw": "127.0.0.1:7350/v2/account/authenticate/device",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7350",
+					"path": [
+						"v2",
+						"account",
+						"authenticate",
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RPC_Call",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aWQiOiIyYmY1MDE1ZC1lMWE5LTQ3ZWUtYTAwMS0wNjJmZjBhNGRkODIiLCJ1aWQiOiI5NWU0NjIyZC1mMjAzLTQ2ZTMtYjdlZS1mYTQyZDJjM2I1MTYiLCJ1c24iOiJHQ29OeGRiWVB1IiwiZXhwIjoxNzExNDk2MDA2fQ.nFZPGJg-mfdKFHjP_KlF8UaQH7n3mSTIfg-EuuK7ffs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\"{\\\"type\\\":\\\"core\\\",\\\"version\\\":\\\"1.0.1\\\",\\\"hash\\\":\\\"33edb3d69fb5d4e9419dc4b1b8d43fd4563e1ede06620ab9e960e5992d3b0548\\\"}\""
+				},
+				"url": {
+					"raw": "127.0.0.1:7350/v2/rpc/file_hash",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7350",
+					"path": [
+						"v2",
+						"rpc",
+						"file_hash"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
