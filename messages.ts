@@ -7,6 +7,7 @@ interface FileHashRequest {
 interface FileHashResponse {
     type: string,
     version: string,
-    hash: string,
-    content: string
+    hash?: string,
+    content?: string | null,
+    error?: string
 }
