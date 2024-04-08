@@ -1,9 +1,12 @@
 FROM node:alpine AS node-builder
 
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git openssh
+
 WORKDIR /backend
 
 COPY package*.json .
-RUN npm install
+RUN npm install --loglevel verbose
 
 COPY . .
 RUN npm run build
